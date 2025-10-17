@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact • Golfers' Hub</title>
+  <meta name="description" content="Contact Golfers' Hub or submit your own tip to be featured.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="Golfers' Hub Logo" class="logo"> Golfers' Hub</a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="swing-tips.html">Swing Tips</a>
+        <a href="club-reviews.html">Club Reviews</a>
+        <a href="course-finder.html">Course Finder</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Contact & Submit a Tip</h1>
+    <p class="lead">Have a swing tip or a course review? Submit it below. Required fields are marked.</p>
+
+    <form id="contactForm" onsubmit="return validateForm();" novalidate>
+      <label for="name">Full name *</label>
+      <input id="name" name="name" type="text" required>
+
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required>
+
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" type="text">
+
+      <label for="message">Your tip / message *</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <label for="agree"><input id="agree" name="agree" type="checkbox" required> I agree to have this tip reviewed and published (if selected).</label>
+
+      <button class="btn" type="submit">Submit</button>
+    </form>
+
+    <div id="contactResult" class="result" aria-live="polite" hidden></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="yearContact"></span> Golfers' Hub</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
