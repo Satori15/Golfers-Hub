@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Golfers' Hub.">
-  <title>Golfers' Hub - Contact</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Golfers' Hub to share feedback or ask questions.">
+  <meta name="keywords" content="golf, contact, feedback, community">
+  <title>Contact - Golfers' Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header>
-    <h1>GOLFERS' HUB</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="swing-tips.html">Swing Tips</a>
@@ -20,30 +23,58 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h2>GET IN TOUCH</h2>
-      <h1>CONTACT US</h1>
-      <p>Have questions or want to contribute? Reach out and join our golf community!</p>
-    </div>
-  </section>
-
   <main>
     <section class="info">
-      <h3>Contact Form</h3>
-      <p>We’d love to hear from you! Fill out the form below and we’ll respond as soon as possible.</p>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
+      <h2>Contact Us</h2>
+      <p>Have questions, feedback, or ideas? Send us a message and we’ll get back to you!</p>
+
+      <form id="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
+
+      <div id="form-response" style="margin-top:15px; font-weight:bold;"></div>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const responseDiv = document.getElementById('form-response');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if(name === "" || email === "" || message === ""){
+        responseDiv.textContent = "Please fill out all fields.";
+        responseDiv.style.color = "red";
+        return;
+      }
+
+      // Simple email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(email)){
+        responseDiv.textContent = "Please enter a valid email address.";
+        responseDiv.style.color = "red";
+        return;
+      }
+
+      // Success message
+      responseDiv.textContent = "Thank you! Your message has been sent.";
+      responseDiv.style.color = "#00ff88";
+
+      // Clear form
+      form.reset();
+    });
+  </script>
 </body>
 </html>
