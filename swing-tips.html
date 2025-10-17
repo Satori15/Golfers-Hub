@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Swing tips for golf enthusiasts.">
-  <title>Golfers' Hub - Swing Tips</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Golf Swing Tips for all skill levels.">
+  <meta name="keywords" content="golf, swing tips, advice, golf community">
+  <title>Swing Tips - Golfers' Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header>
-    <h1>GOLFERS' HUB</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="swing-tips.html" class="active">Swing Tips</a>
@@ -20,41 +23,56 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h2>IMPROVE YOUR SWING</h2>
-      <h1>SWING TIPS</h1>
-      <p>Explore expert tips and techniques to perfect your golf swing.</p>
-    </div>
-  </section>
-
   <main>
     <section class="info">
-      <h3>Top Swing Tips</h3>
-      <div class="cards-container">
-        <div class="card">
-          <h4>Maintain Balance</h4>
-          <p>Keep your weight evenly distributed for a smoother swing.</p>
-        </div>
-        <div class="card">
-          <h4>Eye on the Ball</h4>
-          <p>Focus on the ball throughout your swing to increase accuracy.</p>
-        </div>
-        <div class="card">
-          <h4>Smooth Motion</h4>
-          <p>Practice slow, controlled swings to build consistency.</p>
-        </div>
-        <div class="card">
-          <h4>Short Swings First</h4>
-          <p>Master small swings before attempting full power shots.</p>
-        </div>
-      </div>
+      <h2>Top Swing Tips</h2>
+      <ul id="tips-list">
+        <li>Focus on balance during your swing.</li>
+        <li>Keep your head steady and eyes on the ball.</li>
+        <li>Follow through completely to improve distance.</li>
+        <li>Practice tempo and rhythm to reduce errors.</li>
+      </ul>
+
+      <h3>Add Your Own Tip</h3>
+      <form id="add-tip-form">
+        <input type="text" id="new-tip" placeholder="Write your swing tip here" required>
+        <button type="submit" class="btn">Add Tip</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
+
+  <script>
+    // Load tips from localStorage
+    const tipsList = document.getElementById('tips-list');
+    const storedTips = JSON.parse(localStorage.getItem('swingTips')) || [];
+    storedTips.forEach(tip => {
+      const li = document.createElement('li');
+      li.textContent = tip;
+      tipsList.appendChild(li);
+    });
+
+    // Add new tip
+    const addTipForm = document.getElementById('add-tip-form');
+    addTipForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newTipInput = document.getElementById('new-tip');
+      const newTip = newTipInput.value.trim();
+      if(newTip){
+        const li = document.createElement('li');
+        li.textContent = newTip;
+        tipsList.appendChild(li);
+
+        // Save to localStorage
+        storedTips.push(newTip);
+        localStorage.setItem('swingTips', JSON.stringify(storedTips));
+
+        newTipInput.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
