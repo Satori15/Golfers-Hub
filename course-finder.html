@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Find local golf courses.">
-  <title>Golfers' Hub - Course Finder</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find and Review Golf Courses.">
+  <meta name="keywords" content="golf, course finder, reviews, golf community">
+  <title>Course Finder - Golfers' Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header>
-    <h1>GOLFERS' HUB</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="swing-tips.html">Swing Tips</a>
@@ -20,41 +23,54 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h2>DISCOVER COURSES</h2>
-      <h1>COURSE FINDER</h1>
-      <p>Search for local courses and find tee times to enjoy your next game.</p>
-    </div>
-  </section>
-
   <main>
     <section class="info">
-      <h3>Popular Local Courses</h3>
-      <div class="cards-container">
-        <div class="card">
-          <h4>Connersville Country Club</h4>
-          <p>18-hole championship course with scenic greens and challenging holes.</p>
-        </div>
-        <div class="card">
-          <h4>Green Valley Golf Course</h4>
-          <p>Great for beginners and casual golfers, with well-maintained fairways.</p>
-        </div>
-        <div class="card">
-          <h4>Sunset Hills Golf Club</h4>
-          <p>Offers evening tee times and beautiful sunset views for a relaxing round.</p>
-        </div>
-        <div class="card">
-          <h4>Lakeside Golf Resort</h4>
-          <p>Premium amenities, practice facilities, and top-rated hospitality.</p>
-        </div>
-      </div>
+      <h2>Course Spotlight</h2>
+      <ul id="courses-list">
+        <li>Sunnyvale Golf Club – Challenging greens, beautiful fairways.</li>
+        <li>Riverside Golf Course – Great practice facilities and friendly staff.</li>
+        <li>Maplewood Links – Scenic course with excellent tee time deals.</li>
+      </ul>
+
+      <h3>Add Your Course Review</h3>
+      <form id="add-course-form">
+        <input type="text" id="new-course" placeholder="Write your course review here" required>
+        <button type="submit" class="btn">Add Review</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
+
+  <script>
+    // Load course reviews from localStorage
+    const coursesList = document.getElementById('courses-list');
+    const storedCourses = JSON.parse(localStorage.getItem('courseReviews')) || [];
+    storedCourses.forEach(course => {
+      const li = document.createElement('li');
+      li.textContent = course;
+      coursesList.appendChild(li);
+    });
+
+    // Add new course review
+    const addCourseForm = document.getElementById('add-course-form');
+    addCourseForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const newCourseInput = document.getElementById('new-course');
+      const newCourse = newCourseInput.value.trim();
+      if(newCourse){
+        const li = document.createElement('li');
+        li.textContent = newCourse;
+        coursesList.appendChild(li);
+
+        storedCourses.push(newCourse);
+        localStorage.setItem('courseReviews', JSON.stringify(storedCourses));
+
+        newCourseInput.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
