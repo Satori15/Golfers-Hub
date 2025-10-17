@@ -1,0 +1,44 @@
+/* Mobile-first styles - css/style.css */
+:root{
+  --green:#0f7a3a;
+  --gold:#caa14a;
+  --muted:#6b7280;
+  --bg:#ffffff;
+  --surface:#f8fafb;
+  --text:#0f1724;
+}
+*{box-sizing:border-box}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0; color:var(--text); background:var(--surface); line-height:1.5;
+}
+.container{max-width:1000px;margin:0 auto;padding:1rem}
+.site-header{background:var(--bg);border-bottom:1px solid #e6edf2}
+.brand{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 0;text-decoration:none;color:inherit;font-weight:700}
+.logo{width:40px;height:40px}
+.main-nav{display:flex;gap:1rem;flex-wrap:wrap}
+.main-nav a{text-decoration:none;color:var(--muted);font-weight:600}
+.hero{padding:1rem 0}
+.hero h1{font-size:1.5rem;margin:.25rem 0}
+.lead{color:var(--muted)}
+.actions{margin:0.75rem 0}
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;background:var(--green);color:white;text-decoration:none}
+.btn.ghost{background:transparent;border:1px solid #dbeafe;color:var(--muted)}
+.features ul{padding-left:1.1rem}
+.thumb{width:100%;height:auto;border-radius:6px;margin-top:.5rem}
+.scorecard{width:100%;border-collapse:collapse;margin-top:1rem;background:white}
+.scorecard th, .scorecard td{padding:.6rem;border:1px solid #e6edf2}
+.site-footer{border-top:1px solid #e6edf2;padding:1rem 0;margin-top:2rem;color:var(--muted);background:var(--bg)}
+.result{margin-top:1rem;padding:.75rem;border-radius:6px;background:#f1fdf6;color:#064e2d}
+input,select,textarea{width:100%;padding:.55rem;border:1px solid #e6edf2;border-radius:6px;margin-top:.25rem}
+label{display:block;margin-top:.75rem;font-weight:600}
+
+/* Larger screens */
+@media(min-width:720px){
+  .hero{display:flex;gap:1rem;align-items:center}
+  .hero-img{max-width:45%;border-radius:6px}
+  .main-nav{gap:1.25rem}
+}
+
+/* Focus for accessibility */
+a:focus,button:focus,input:focus,select:focus,textarea:focus{outline:3px solid #d1fae5;outline-offset:2px}
