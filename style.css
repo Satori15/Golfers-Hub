@@ -180,17 +180,21 @@ main {
 }
 
 /* ============================= */
-/* Contact Form */
+/* Forms: Contact & Sign Up */
 form {
-  max-width: 500px;
-  margin: 20px auto 0 auto;
+  max-width: 450px;
+  margin: 20px auto;
   text-align: left;
+  padding: 30px;
+  background-color: rgba(248, 249, 246, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
 }
 
 form input, form textarea {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
+  padding: 14px;
+  margin-bottom: 20px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
@@ -203,12 +207,14 @@ form textarea {
 
 form button {
   display: inline-block;
+  width: 100%;
   background-color: #00ff88;
   color: #004400;
-  padding: 12px 30px;
+  padding: 14px;
   border: none;
   border-radius: 30px;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -226,20 +232,4 @@ footer {
   margin-top: 40px;
 }
 
-/* ============================= */
-/* Responsive */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    padding: 15px 20px;
-  }
-  .hero-text h1 {
-    font-size: 3.5rem;
-  }
-  .hero-text h2 {
-    font-size: 1.4rem;
-  }
-  main {
-    padding: 40px 15px;
-  }
-}
+/* ================*
