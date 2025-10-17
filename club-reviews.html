@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Golf club reviews and recommendations.">
-  <title>Golfers' Hub - Club Reviews</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Golf Club Reviews and Recommendations.">
+  <meta name="keywords" content="golf, club reviews, equipment, golf community">
+  <title>Club Reviews - Golfers' Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header>
-    <h1>GOLFERS' HUB</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="swing-tips.html">Swing Tips</a>
@@ -20,41 +23,54 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h2>FIND THE BEST CLUBS</h2>
-      <h1>CLUB REVIEWS</h1>
-      <p>Read honest reviews from fellow golfers and discover the gear that works best.</p>
-    </div>
-  </section>
-
   <main>
     <section class="info">
-      <h3>Featured Club Reviews</h3>
-      <div class="cards-container">
-        <div class="card">
-          <h4>Callaway Rogue Irons</h4>
-          <p>Perfect for mid-level players looking for accuracy and distance.</p>
-        </div>
-        <div class="card">
-          <h4>Titleist Pro V1</h4>
-          <p>Excellent performance on all courses with consistent flight.</p>
-        </div>
-        <div class="card">
-          <h4>Ping G425 Driver</h4>
-          <p>Maximizes distance and provides excellent forgiveness for off-center hits.</p>
-        </div>
-        <div class="card">
-          <h4>Cleveland RTX Wedges</h4>
-          <p>Offers great control and spin for short game mastery.</p>
-        </div>
-      </div>
+      <h2>Club Reviews</h2>
+      <ul id="clubs-list">
+        <li>Callaway Apex Pro Irons – Excellent feel and distance.</li>
+        <li>TaylorMade Stealth Driver – Very forgiving and long drives.</li>
+        <li>PING G425 Max – Consistent performance for all levels.</li>
+      </ul>
+
+      <h3>Add Your Club Review</h3>
+      <form id="add-club-form">
+        <input type="text" id="new-club" placeholder="Write your club review here" required>
+        <button type="submit" class="btn">Add Review</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
+
+  <script>
+    // Load club reviews from localStorage
+    const clubsList = document.getElementById('clubs-list');
+    const storedClubs = JSON.parse(localStorage.getItem('clubReviews')) || [];
+    storedClubs.forEach(club => {
+      const li = document.createElement('li');
+      li.textContent = club;
+      clubsList.appendChild(li);
+    });
+
+    // Add new club review
+    const addClubForm = document.getElementById('add-club-form');
+    addClubForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const newClubInput = document.getElementById('new-club');
+      const newClub = newClubInput.value.trim();
+      if(newClub){
+        const li = document.createElement('li');
+        li.textContent = newClub;
+        clubsList.appendChild(li);
+
+        storedClubs.push(newClub);
+        localStorage.setItem('clubReviews', JSON.stringify(storedClubs));
+
+        newClubInput.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
