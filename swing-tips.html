@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Golf Swing Tips for all skill levels.">
-  <meta name="keywords" content="golf, swing tips, advice, golf community">
+  <meta name="description" content="Share and read swing tips from golf enthusiasts.">
+  <meta name="keywords" content="golf, swing tips, community">
   <title>Swing Tips - Golfers' Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,24 +20,22 @@
       <a href="club-reviews.html">Club Reviews</a>
       <a href="course-finder.html">Course Finder</a>
       <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
   <main>
     <section class="info">
-      <h2>Top Swing Tips</h2>
-      <ul id="tips-list">
-        <li>Focus on balance during your swing.</li>
-        <li>Keep your head steady and eyes on the ball.</li>
-        <li>Follow through completely to improve distance.</li>
-        <li>Practice tempo and rhythm to reduce errors.</li>
-      </ul>
+      <h2>Swing Tips</h2>
+      <p>Share your best golf swing tips or read tips from other members.</p>
 
-      <h3>Add Your Own Tip</h3>
-      <form id="add-tip-form">
-        <input type="text" id="new-tip" placeholder="Write your swing tip here" required>
+      <form id="tips-form">
+        <input type="text" id="tip-name" placeholder="Your Name" required>
+        <textarea id="tip-text" placeholder="Your Swing Tip" rows="3" required></textarea>
         <button type="submit" class="btn">Add Tip</button>
       </form>
+
+      <ul id="tips-list" style="margin-top:20px;"></ul>
     </section>
   </main>
 
@@ -46,33 +44,26 @@
   </footer>
 
   <script>
-    // Load tips from localStorage
+    const tipsForm = document.getElementById('tips-form');
     const tipsList = document.getElementById('tips-list');
-    const storedTips = JSON.parse(localStorage.getItem('swingTips')) || [];
-    storedTips.forEach(tip => {
-      const li = document.createElement('li');
-      li.textContent = tip;
-      tipsList.appendChild(li);
-    });
 
-    // Add new tip
-    const addTipForm = document.getElementById('add-tip-form');
-    addTipForm.addEventListener('submit', function(e) {
+    tipsForm.addEventListener('submit', function(e){
       e.preventDefault();
-      const newTipInput = document.getElementById('new-tip');
-      const newTip = newTipInput.value.trim();
-      if(newTip){
-        const li = document.createElement('li');
-        li.textContent = newTip;
-        tipsList.appendChild(li);
+      const name = document.getElementById('tip-name').value.trim();
+      const tip = document.getElementById('tip-text').value.trim();
 
-        // Save to localStorage
-        storedTips.push(newTip);
-        localStorage.setItem('swingTips', JSON.stringify(storedTips));
-
-        newTipInput.value = '';
+      if(name === "" || tip === ""){
+        alert("Please fill out both fields.");
+        return;
       }
+
+      const li = document.createElement('li');
+      li.textContent = `${name}: ${tip}`;
+      tipsList.appendChild(li);
+
+      tipsForm.reset();
     });
   </script>
 </body>
 </html>
+
