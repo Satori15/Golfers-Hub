@@ -1,57 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Contact • Golfers' Hub</title>
-  <meta name="description" content="Contact Golfers' Hub or submit your own tip to be featured.">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Golfers' Hub.">
+  <title>Golfers' Hub - Contact</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="brand" href="index.html"><img src="images/logo.png" alt="Golfers' Hub Logo" class="logo"> Golfers' Hub</a>
-      <nav class="main-nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="swing-tips.html">Swing Tips</a>
-        <a href="club-reviews.html">Club Reviews</a>
-        <a href="course-finder.html">Course Finder</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+  <header>
+    <h1>GOLFERS' HUB</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="swing-tips.html">Swing Tips</a>
+      <a href="club-reviews.html">Club Reviews</a>
+      <a href="course-finder.html">Course Finder</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
   </header>
 
-  <main class="container">
-    <h1>Contact & Submit a Tip</h1>
-    <p class="lead">Have a swing tip or a course review? Submit it below. Required fields are marked.</p>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h2>GET IN TOUCH</h2>
+      <h1>CONTACT US</h1>
+      <p>Have questions or want to contribute? Reach out and join our golf community!</p>
+    </div>
+  </section>
 
-    <form id="contactForm" onsubmit="return validateForm();" novalidate>
-      <label for="name">Full name *</label>
-      <input id="name" name="name" type="text" required>
-
-      <label for="email">Email *</label>
-      <input id="email" name="email" type="email" required>
-
-      <label for="subject">Subject</label>
-      <input id="subject" name="subject" type="text">
-
-      <label for="message">Your tip / message *</label>
-      <textarea id="message" name="message" rows="6" required></textarea>
-
-      <label for="agree"><input id="agree" name="agree" type="checkbox" required> I agree to have this tip reviewed and published (if selected).</label>
-
-      <button class="btn" type="submit">Submit</button>
-    </form>
-
-    <div id="contactResult" class="result" aria-live="polite" hidden></div>
+  <main>
+    <section class="info">
+      <h3>Contact Form</h3>
+      <p>We’d love to hear from you! Fill out the form below and we’ll respond as soon as possible.</p>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="yearContact"></span> Golfers' Hub</p>
-    </div>
+  <footer>
+    <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
