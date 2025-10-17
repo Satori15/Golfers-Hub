@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Golf Club Reviews and Recommendations.">
-  <meta name="keywords" content="golf, club reviews, equipment, golf community">
+  <meta name="description" content="Share and read club reviews from golf enthusiasts.">
+  <meta name="keywords" content="golf, club reviews, community">
   <title>Club Reviews - Golfers' Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,23 +20,23 @@
       <a href="club-reviews.html" class="active">Club Reviews</a>
       <a href="course-finder.html">Course Finder</a>
       <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
   <main>
     <section class="info">
       <h2>Club Reviews</h2>
-      <ul id="clubs-list">
-        <li>Callaway Apex Pro Irons – Excellent feel and distance.</li>
-        <li>TaylorMade Stealth Driver – Very forgiving and long drives.</li>
-        <li>PING G425 Max – Consistent performance for all levels.</li>
-      </ul>
+      <p>Share your experience with your favorite golf clubs or read reviews from others.</p>
 
-      <h3>Add Your Club Review</h3>
-      <form id="add-club-form">
-        <input type="text" id="new-club" placeholder="Write your club review here" required>
+      <form id="clubs-form">
+        <input type="text" id="club-name" placeholder="Your Name" required>
+        <input type="text" id="club-model" placeholder="Club Model" required>
+        <textarea id="club-review" placeholder="Your Review" rows="3" required></textarea>
         <button type="submit" class="btn">Add Review</button>
       </form>
+
+      <ul id="clubs-list" style="margin-top:20px;"></ul>
     </section>
   </main>
 
@@ -45,31 +45,25 @@
   </footer>
 
   <script>
-    // Load club reviews from localStorage
+    const clubsForm = document.getElementById('clubs-form');
     const clubsList = document.getElementById('clubs-list');
-    const storedClubs = JSON.parse(localStorage.getItem('clubReviews')) || [];
-    storedClubs.forEach(club => {
-      const li = document.createElement('li');
-      li.textContent = club;
-      clubsList.appendChild(li);
-    });
 
-    // Add new club review
-    const addClubForm = document.getElementById('add-club-form');
-    addClubForm.addEventListener('submit', function(e){
+    clubsForm.addEventListener('submit', function(e){
       e.preventDefault();
-      const newClubInput = document.getElementById('new-club');
-      const newClub = newClubInput.value.trim();
-      if(newClub){
-        const li = document.createElement('li');
-        li.textContent = newClub;
-        clubsList.appendChild(li);
+      const name = document.getElementById('club-name').value.trim();
+      const model = document.getElementById('club-model').value.trim();
+      const review = document.getElementById('club-review').value.trim();
 
-        storedClubs.push(newClub);
-        localStorage.setItem('clubReviews', JSON.stringify(storedClubs));
-
-        newClubInput.value = '';
+      if(name === "" || model === "" || review === ""){
+        alert("Please fill out all fields.");
+        return;
       }
+
+      const li = document.createElement('li');
+      li.textContent = `${name} - ${model}: ${review}`;
+      clubsList.appendChild(li);
+
+      clubsForm.reset();
     });
   </script>
 </body>
