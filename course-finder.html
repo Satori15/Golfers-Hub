@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Find and Review Golf Courses.">
-  <meta name="keywords" content="golf, course finder, reviews, golf community">
+  <meta name="description" content="Share and find golf course reviews and recommendations.">
+  <meta name="keywords" content="golf, course reviews, community">
   <title>Course Finder - Golfers' Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,23 +20,23 @@
       <a href="club-reviews.html">Club Reviews</a>
       <a href="course-finder.html" class="active">Course Finder</a>
       <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
   <main>
     <section class="info">
-      <h2>Course Spotlight</h2>
-      <ul id="courses-list">
-        <li>Sunnyvale Golf Club – Challenging greens, beautiful fairways.</li>
-        <li>Riverside Golf Course – Great practice facilities and friendly staff.</li>
-        <li>Maplewood Links – Scenic course with excellent tee time deals.</li>
-      </ul>
+      <h2>Course Finder</h2>
+      <p>Add and browse golf course reviews from our community.</p>
 
-      <h3>Add Your Course Review</h3>
-      <form id="add-course-form">
-        <input type="text" id="new-course" placeholder="Write your course review here" required>
+      <form id="course-form">
+        <input type="text" id="course-name" placeholder="Course Name" required>
+        <input type="text" id="course-location" placeholder="Location" required>
+        <textarea id="course-review" placeholder="Your Review" rows="3" required></textarea>
         <button type="submit" class="btn">Add Review</button>
       </form>
+
+      <ul id="course-list" style="margin-top:20px;"></ul>
     </section>
   </main>
 
@@ -45,32 +45,27 @@
   </footer>
 
   <script>
-    // Load course reviews from localStorage
-    const coursesList = document.getElementById('courses-list');
-    const storedCourses = JSON.parse(localStorage.getItem('courseReviews')) || [];
-    storedCourses.forEach(course => {
-      const li = document.createElement('li');
-      li.textContent = course;
-      coursesList.appendChild(li);
-    });
+    const courseForm = document.getElementById('course-form');
+    const courseList = document.getElementById('course-list');
 
-    // Add new course review
-    const addCourseForm = document.getElementById('add-course-form');
-    addCourseForm.addEventListener('submit', function(e){
+    courseForm.addEventListener('submit', function(e){
       e.preventDefault();
-      const newCourseInput = document.getElementById('new-course');
-      const newCourse = newCourseInput.value.trim();
-      if(newCourse){
-        const li = document.createElement('li');
-        li.textContent = newCourse;
-        coursesList.appendChild(li);
+      const name = document.getElementById('course-name').value.trim();
+      const location = document.getElementById('course-location').value.trim();
+      const review = document.getElementById('course-review').value.trim();
 
-        storedCourses.push(newCourse);
-        localStorage.setItem('courseReviews', JSON.stringify(storedCourses));
-
-        newCourseInput.value = '';
+      if(name === "" || location === "" || review === ""){
+        alert("Please fill out all fields.");
+        return;
       }
+
+      const li = document.createElement('li');
+      li.textContent = `${name} (${location}): ${review}`;
+      courseList.appendChild(li);
+
+      courseForm.reset();
     });
   </script>
 </body>
 </html>
+
