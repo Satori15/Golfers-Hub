@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header>
     <div class="logo">
       <img src="images/golf logo.png" alt="Golfers' Hub Logo">
@@ -23,6 +24,7 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero" style="height:50vh;">
     <div class="overlay"></div>
     <div class="hero-text">
@@ -31,6 +33,7 @@
     </div>
   </section>
 
+  <!-- Sign Up Form -->
   <main>
     <section class="info">
       <form id="signup-form">
@@ -47,8 +50,26 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
+
+  <!-- Optional JavaScript for form validation -->
+  <script>
+    const form = document.getElementById('signup-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = form.password.value;
+      const confirmPassword = form['confirm-password'].value;
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      alert('Account successfully created!');
+      form.reset();
+    });
+  </script>
 </body>
 </html>
+
