@@ -3,46 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Share and find golf course reviews and recommendations.">
+  <meta name="keywords" content="golf, course reviews, community">
   <title>Course Finder - Golfers' Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Golfers' Hub</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="swingtips.html">Swing Tips</a></li>
-        <li><a href="reviews.html">Club Reviews</a></li>
-        <li><a href="courses.html" class="active">Course Finder</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="swing-tips.html">Swing Tips</a>
+      <a href="club-reviews.html">Club Reviews</a>
+      <a href="course-finder.html" class="active">Course Finder</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
-  <section class="content">
-    <h2>Golf Course Reviews</h2>
-    <form id="courseForm" class="post-form">
-      <textarea id="courseInput" placeholder="Share your favorite course or a recent golf experience..." required></textarea>
-      <button type="submit">Post Course Review</button>
-    </form>
-    <div id="courseList" class="post-list"></div>
-  </section>
+  <main>
+    <section class="info">
+      <h2>Course Finder</h2>
+      <p>Add and browse golf course reviews from our community.</p>
+
+      <form id="course-form">
+        <input type="text" id="course-name" placeholder="Course Name" required>
+        <input type="text" id="course-location" placeholder="Location" required>
+        <textarea id="course-review" placeholder="Your Review" rows="3" required></textarea>
+        <button type="submit" class="btn">Add Review</button>
+      </form>
+
+      <ul id="course-list" style="margin-top:20px;"></ul>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Golfers' Hub. All rights reserved.</p>
+    <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
 
-  <script src="script.js"></script>
   <script>
-    loadPosts("courses");
+    const courseForm = document.getElementById('course-form');
+    const courseList = document.getElementById('course-list');
 
-    document.getElementById("courseForm").addEventListener("submit", (e) => {
+    courseForm.addEventListener('submit', function(e){
       e.preventDefault();
-      addPost("courses", "courseInput", "courseList");
+      const name = document.getElementById('course-name').value.trim();
+      const location = document.getElementById('course-location').value.trim();
+      const review = document.getElementById('course-review').value.trim();
+
+      if(name === "" || location === "" || review === ""){
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.textContent = `${name} (${location}): ${review}`;
+      courseList.appendChild(li);
+
+      courseForm.reset();
     });
   </script>
 </body>
 </html>
-
 
