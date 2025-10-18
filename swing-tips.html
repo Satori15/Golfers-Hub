@@ -3,45 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Share and read swing tips from golf enthusiasts.">
+  <meta name="keywords" content="golf, swing tips, community">
   <title>Swing Tips - Golfers' Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Golfers' Hub</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="swingtips.html" class="active">Swing Tips</a></li>
-        <li><a href="reviews.html">Club Reviews</a></li>
-        <li><a href="courses.html">Course Finder</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="swing-tips.html" class="active">Swing Tips</a>
+      <a href="club-reviews.html">Club Reviews</a>
+      <a href="course-finder.html">Course Finder</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
-  <section class="content">
-    <h2>Community Swing Tips</h2>
-    <form id="tipForm" class="post-form">
-      <textarea id="tipInput" placeholder="Share your swing tip here..." required></textarea>
-      <button type="submit">Post Tip</button>
-    </form>
-    <div id="tipList" class="post-list"></div>
-  </section>
+  <main>
+    <section class="info">
+      <h2>Swing Tips</h2>
+      <p>Share your best golf swing tips or read tips from other members.</p>
+
+      <form id="tips-form">
+        <input type="text" id="tip-name" placeholder="Your Name" required>
+        <textarea id="tip-text" placeholder="Your Swing Tip" rows="3" required></textarea>
+        <button type="submit" class="btn">Add Tip</button>
+      </form>
+
+      <ul id="tips-list" style="margin-top:20px;"></ul>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Golfers' Hub. All rights reserved.</p>
+    <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
 
-  <script src="script.js"></script>
   <script>
-    loadPosts("tips");
+    const tipsForm = document.getElementById('tips-form');
+    const tipsList = document.getElementById('tips-list');
 
-    document.getElementById("tipForm").addEventListener("submit", (e) => {
+    tipsForm.addEventListener('submit', function(e){
       e.preventDefault();
-      addPost("tips", "tipInput", "tipList");
+      const name = document.getElementById('tip-name').value.trim();
+      const tip = document.getElementById('tip-text').value.trim();
+
+      if(name === "" || tip === ""){
+        alert("Please fill out both fields.");
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.textContent = `${name}: ${tip}`;
+      tipsList.appendChild(li);
+
+      tipsForm.reset();
     });
   </script>
 </body>
 </html>
+
 
