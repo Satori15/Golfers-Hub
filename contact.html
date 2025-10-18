@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Golfers' Hub to share feedback or ask questions.">
-  <meta name="keywords" content="golf, contact, feedback, community">
-  <title>Contact - Golfers' Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Golfers' Hub — your community for swing tips, club reviews, and course recommendations. Get in touch with us today!" />
+  <meta name="keywords" content="golf contact, golf community, golfers hub, contact form, golf advice" />
+  <meta name="author" content="Golfers' Hub Team" />
+  <title>Contact Us | Golfers' Hub</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
-      <h1>GOLFERS' HUB</h1>
+      <img src="images/logo.png" alt="Golfers' Hub Logo">
+      <h1>Golfers' Hub</h1>
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="swing-tips.html">Swing Tips</a>
-      <a href="club-reviews.html">Club Reviews</a>
-      <a href="course-finder.html">Course Finder</a>
+      <a href="swingtips.html">Swing Tips</a>
+      <a href="clubreviews.html">Club Reviews</a>
+      <a href="coursefinder.html">Course Finder</a>
+      <a href="signup.html">Sign Up</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
@@ -26,16 +28,32 @@
   <main>
     <section class="info">
       <h2>Contact Us</h2>
-      <p>Have questions, feedback, or ideas? Send us a message and we’ll get back to you!</p>
+      <p>We’d love to hear from you! Whether you have a question, suggestion, or partnership opportunity — send us a message below and we’ll get back to you soon.</p>
 
       <form id="contact-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name">
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter a subject">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write your message here..."></textarea>
+
         <button type="submit" class="btn">Send Message</button>
       </form>
 
-      <div id="form-response" style="margin-top:15px; font-weight:bold;"></div>
+      <p id="contact-response" class="form-response"></p>
+
+      <h3>Follow Us</h3>
+      <ul>
+        <li><a href="https://www.pgatour.com/" target="_blank">PGA Tour Official Site</a></li>
+        <li><a href="https://www.golfdigest.com/" target="_blank">Golf Digest</a></li>
+        <li><a href="https://www.usga.org/" target="_blank">USGA - United States Golf Association</a></li>
+      </ul>
     </section>
   </main>
 
@@ -44,36 +62,26 @@
   </footer>
 
   <script>
-    const form = document.getElementById('contact-form');
-    const responseDiv = document.getElementById('form-response');
+    const contactForm = document.getElementById('contact-form');
+    const contactResponse = document.getElementById('contact-response');
 
-    form.addEventListener('submit', function(e){
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
       const message = document.getElementById('message').value.trim();
 
-      if(name === "" || email === "" || message === ""){
-        responseDiv.textContent = "Please fill out all fields.";
-        responseDiv.style.color = "red";
+      if (!name || !email || !subject || !message) {
+        contactResponse.textContent = "⚠️ Please fill out all fields.";
+        contactResponse.style.color = "red";
         return;
       }
 
-      // Simple email validation
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailPattern.test(email)){
-        responseDiv.textContent = "Please enter a valid email address.";
-        responseDiv.style.color = "red";
-        return;
-      }
-
-      // Success message
-      responseDiv.textContent = "Thank you! Your message has been sent.";
-      responseDiv.style.color = "#00ff88";
-
-      // Clear form
-      form.reset();
+      contactResponse.textContent = `✅ Thank you, ${name}! Your message has been sent. We'll reply soon.`;
+      contactResponse.style.color = "lime";
+      contactForm.reset();
     });
   </script>
 </body>
