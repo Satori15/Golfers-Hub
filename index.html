@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golfers' Hub - Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Golfers' Hub - Tips, reviews, and advice for golfers of all levels.">
+  <meta name="keywords" content="golf, swing tips, clubs, courses, reviews">
+  <title>Golfers' Hub</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header>
-    <h1>Golfers' Hub</h1>
+    <div class="logo">
+      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
+      <h1>GOLFERS' HUB</h1>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="swingtips.html">Swing Tips</a></li>
-        <li><a href="reviews.html">Club Reviews</a></li>
-        <li><a href="courses.html">Course Finder</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="signup.html" id="signup-link">Sign Up</a></li>
-        <li><a href="login.html" id="login-link">Log In</a></li>
-        <li><a href="#" id="logout-link" style="display: none;">Log Out</a></li>
-      </ul>
+      <a href="index.html" class="active">Home</a>
+      <a href="swing-tips.html">Swing Tips</a>
+      <a href="club-reviews.html">Club Reviews</a>
+      <a href="course-finder.html">Course Finder</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2 id="welcome-message">Welcome to Golfers' Hub</h2>
-    <p>A community for hobby golfers to share swing tips, club reviews, and course recommendations.</p>
-    <a href="signup.html" class="button" id="get-started-btn">Get Started</a>
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h2>BEST PLACE TO PLAY</h2>
+      <h1>GOLF</h1>
+      <p>Join our community and share your best tips, reviews, and golf stories.</p>
+      <a href="signup.html" class="btn">Get Started</a>
+    </div>
   </section>
 
-  <section class="featured">
-    <h3>Featured</h3>
-    <p><strong>Weekly tip:</strong> Focus on balance during the downswing.</p>
-    <p><strong>Member review:</strong> Best irons under $500 for beginners.</p>
-  </section>
+  <main>
+    <section class="info">
+      <h3>Welcome to Golfers' Hub</h3>
+      <p>We’re a growing community for golf enthusiasts who love sharing advice, reviewing gear, and exploring new courses together.</p>
+    </section>
+
+    <section class="featured">
+      <h3>Featured</h3>
+      <ul>
+        <li>🏌️ Weekly Tip: Focus on balance during the downswing.</li>
+        <li>🏆 Member Review: Best irons under $500 for beginners.</li>
+        <li>⛳ Course Spotlight: Local greens and tee time deals.</li>
+      </ul>
+    </section>
+
+    <section class="resources">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://www.pga.com" target="_blank">PGA</a></li>
+        <li><a href="https://www.golfdigest.com" target="_blank">Golf Digest</a></li>
+        <li><a href="https://www.usga.org" target="_blank">USGA</a></li>
+      </ul>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Golfers' Hub. All rights reserved.</p>
+    <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
-
