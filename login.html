@@ -3,77 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Login to Golfers' Hub to access swing tips, reviews, and community features.">
-  <meta name="keywords" content="golf login, golf account, golfers hub, golf community login">
-  <meta name="author" content="Golfers' Hub Team">
-  <title>Login | Golfers' Hub</title>
+  <title>Login - Golfers' Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="images/golf logo.png" alt="Golfers' Hub Logo">
-      <h1>Golfers' Hub</h1>
-    </div>
+    <h1>Golfers' Hub</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="swing-tips.html">Swing Tips</a>
-      <a href="club-reviews.html">Club Reviews</a>
-      <a href="course-finder.html">Course Finder</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="login.html" class="active">Login</a>
-      <a href="contact.html">Contact</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="info form-section">
-      <h2>Login to Your Account</h2>
-      <p>Welcome back! Please enter your credentials to access Golfers' Hub.</p>
-
-      <form id="login-form">
-        <label for="login-email">Email Address:</label>
-        <input type="email" id="login-email" placeholder="Enter your email" required>
-
-        <label for="login-password">Password:</label>
-        <input type="password" id="login-password" placeholder="Enter your password" required>
-
-        <button type="submit" class="btn">Login</button>
-      </form>
-
-      <p id="login-message" class="form-response"></p>
-
-      <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
-    </section>
-  </main>
+  <section class="form-section">
+    <h2>Log In</h2>
+    <form onsubmit="handleLogin(event)">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <button type="submit">Log In</button>
+    </form>
+  </section>
 
   <footer>
-    <p>© 2025 Golfers' Hub • Connersville, IN</p>
+    <p>&copy; 2025 Golfers' Hub. All rights reserved.</p>
   </footer>
 
-  <script>
-    const loginForm = document.getElementById('login-form');
-    const loginMessage = document.getElementById('login-message');
-
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const email = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value.trim();
-
-      const storedUsers = JSON.parse(localStorage.getItem('golfUsers')) || [];
-      const foundUser = storedUsers.find(user => user.email === email && user.password === password);
-
-      if (foundUser) {
-        loginMessage.textContent = `✅ Welcome back, ${foundUser.name}!`;
-        loginMessage.style.color = 'lime';
-        localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
-        setTimeout(() => window.location.href = 'index.html', 1500);
-      } else {
-        loginMessage.textContent = "⚠️ Invalid email or password. Please try again.";
-        loginMessage.style.color = 'red';
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
