@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Golfers' Hub - Tips, reviews, and advice for golfers of all levels.">
-  <meta name="keywords" content="golf, swing tips, clubs, courses, reviews">
-  <title>Golfers' Hub</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Golfers' Hub - A community for hobby golfers to share swing tips, club reviews, and course recommendations.">
+  <meta name="keywords" content="golf, golf swing, club reviews, golf courses, golfing community">
+  <meta name="author" content="Golfers' Hub Team">
+  <title>Golfers' Hub | Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header>
     <div class="logo">
       <img src="images/golf logo.png" alt="Golfers' Hub Logo">
-      <h1>GOLFERS' HUB</h1>
+      <h1>Golfers' Hub</h1>
     </div>
     <nav>
       <a href="index.html" class="active">Home</a>
       <a href="swing-tips.html">Swing Tips</a>
       <a href="club-reviews.html">Club Reviews</a>
       <a href="course-finder.html">Course Finder</a>
-      <a href="contact.html">Contact</a>
       <a href="signup.html">Sign Up</a>
+      <a href="login.html">Login</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h2>BEST PLACE TO PLAY</h2>
-      <h1>GOLF</h1>
-      <p>Join our community and share your best tips, reviews, and golf stories.</p>
-      <a href="signup.html" class="btn">Get Started</a>
-    </div>
-  </section>
-
   <main>
-    <section class="info">
-      <h3>Welcome to Golfers' Hub</h3>
-      <p>We’re a growing community for golf enthusiasts who love sharing advice, reviewing gear, and exploring new courses together.</p>
+    <section class="hero">
+      <h2 id="welcome-message">Welcome to Golfers' Hub</h2>
+      <p>Your community for golf tips, club reviews, and course recommendations.</p>
+      <button id="get-started-btn" class="btn">Get Started</button>
+      <button id="logout-btn" class="btn" style="display:none;">Log Out</button>
     </section>
 
     <section class="featured">
       <h3>Featured</h3>
-      <ul>
-        <li>🏌️ Weekly Tip: Focus on balance during the downswing.</li>
-        <li>🏆 Member Review: Best irons under $500 for beginners.</li>
-        <li>⛳ Course Spotlight: Local greens and tee time deals.</li>
-      </ul>
-    </section>
-
-    <section class="resources">
-      <h3>Resources</h3>
-      <ul>
-        <li><a href="https://www.pga.com" target="_blank">PGA</a></li>
-        <li><a href="https://www.golfdigest.com" target="_blank">Golf Digest</a></li>
-        <li><a href="https://www.usga.org" target="_blank">USGA</a></li>
-      </ul>
+      <p>Weekly Tip: Focus on balance during your downswing.</p>
+      <p>Member Review: Best irons under $500 for beginners.</p>
+      <img src="images/golf background.jpg" alt="Scenic golf course at sunrise" class="featured-img">
     </section>
   </main>
 
   <footer>
     <p>© 2025 Golfers' Hub • Connersville, IN</p>
   </footer>
+
+  <script>
+    // Detect logged-in user
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const welcomeMessage = document.getElementById('welcome-message');
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (loggedInUser) {
+      welcomeMessage.textContent = `Welcome, ${loggedInUser.name}!`;
+      getStartedBtn.textContent = "Explore Swing Tips";
+      getStartedBtn.addEventListener('click', () => {
+        window.location.href = "swing-tips.html";
+      });
+      logoutBtn.style.display = "inline-block";
+    } else {
+      getStartedBtn.addEventListener('click', () => {
+        window.location.href = "signup.html";
+      });
+    }
+
+    // Logout functionality
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('loggedInUser');
+      alert("You’ve been logged out successfully.");
+      window.location.href = "index.html";
+    });
+  </script>
 </body>
 </html>
